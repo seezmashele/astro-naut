@@ -8,9 +8,9 @@ const { posts } = Astro.props
 <div class="w-full flex mb-2 gap-1 border-b mb-4 pb-4 relative z-10">
   {
     posts.map((post) => (
-      <div class="w-1/2 aspect-4/3 relative overflow-hidden group cursor-pointer">
+      <div class="w-1/2 aspect-5/3 relative overflow-hidden group cursor-pointer">
         <Image
-          class="w-full h-full object-cover will-change-transform transition-transform  ease-out duration-800 group-hover:scale-105"
+          class="w-full h-full object-cover will-change-transform transition-transform  ease-out duration-900 group-hover:scale-105"
           src={post.data.heroImage}
           alt={post.data.title}
         />
@@ -19,20 +19,18 @@ const { posts } = Astro.props
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
         {/* Sliding dark grey background */}
-        <div class="absolute bottom-0 left-0 right-0 bg-neutral-800 opacity-80 transform translate-y-full group-hover:opacity group-hover:translate-y-0 transition-transform duration-500 ease-out h-30" />
+        <div class="absolute bottom-0 left-0 right-0 bg-neutral-900 opacity-40 transform translate-y-full group-hover:opacity group-hover:translate-y-0 transition-transform duration-500 ease-out h-30" />
 
         {/* Text content positioned at bottom */}
-        <div class="text-sm text-neutral-300 absolute bg-black/40 bottom-0 left-0 right-0 p-6 pt-3 text-white z-10 transition-all duration-300">
+        <div class="text-sm text-neutral-300 absolute bg-black/40 bottom-0 left-0 right-0 p-6 pt-3 text-white z-10 transition-all duration-500">
           <a
             href={`/post/${post.id}`}
-            class="text-xl font-medium mb-2 block hover:text-gray-200 transition-colors"
+            class="text-lg text-neutral-100 font-medium mb-2 block transition-colors"
           >
             {post.data.title}
           </a>
           <FormattedDate date={post.data.pubDate} />
-          <p class="text-sm mt-2 line-clamp-1 text-gray-100">
-            {post.data.description}
-          </p>
+          <p class="text-sm mt-2 line-clamp-1">{post.data.description}</p>
         </div>
       </div>
     ))

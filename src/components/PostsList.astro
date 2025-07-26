@@ -10,7 +10,7 @@ const { posts } = Astro.props
     posts.map((post) => (
       <div class="w-full border-b pb-4 bg-grey-200 flex gap-4">
         <Image
-          class="w-72 shrink-0 aspect-video bg-neutral-300"
+          class="w-72 shrink-0 aspect-5/3 bg-neutral-300"
           src={post.data.heroImage}
           alt={post.data.title}
         />
