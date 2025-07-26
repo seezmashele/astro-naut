@@ -1,16 +1,40 @@
 ---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import FormattedDate from '../components/FormattedDate.astro'
 
+const posts = await getCollection('posts')
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <div class="w-full flex border-bf">
+    <div class="w-1/2 aspect-4/3 bg-neutral-400">
+      <img
+        class="w-full h-full oject-cover"
+        src="../assets/images/giai.jpg"
+        alt="Giai"
+      />
+    </div>
+    <div class="w-1/2 aspect-4/3 bg-neutral-200"></div>
+  </div>
+  <div class="flex flex-col gap-2f mt-2">
+    {
+      posts.map((post) => (
+        <div class="w-full border-bf pb-2 bg-grey-200 flex gap-4">
+          <img
+            class="w-72 shrink-0 aspect-video bg-neutral-300"
+            src={post.data.heroImage}
+            alt={post.data.title}
+          />
+          <div class="pt-4 flex text-sm flex-col text-base gap-2">
+            <a href={`/post/${post.id}`} class="text-base font-medium">
+              {post.data.title}
+            </a>
+            <FormattedDate date={post.data.pubDate} />
+            <p class="line-clamp-2">{post.data.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
