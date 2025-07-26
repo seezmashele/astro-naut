@@ -5,12 +5,12 @@ import { Image } from 'astro:assets'
 const { posts } = Astro.props
 ---
 
-<div class="w-full z-10 flex mb-4 border-b pb-4 gap-1">
+<div class="w-full flex mb-2 gap-1 border-b mb-4 pb-4 relative z-10">
   {
     posts.map((post) => (
-      <div class="w-1/2 aspect-4/3 relative overflow-hidden">
+      <div class="w-1/2 aspect-4/3 relative overflow-hidden group cursor-pointer">
         <Image
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover will-change-transform transition-transform  ease-out duration-800 group-hover:scale-105"
           src={post.data.heroImage}
           alt={post.data.title}
         />
@@ -18,18 +18,19 @@ const { posts } = Astro.props
         {/* Gradient overlay for better text readability */}
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
+        {/* Sliding dark grey background */}
+        <div class="absolute bottom-0 left-0 right-0 bg-neutral-800 opacity-80 transform translate-y-full group-hover:opacity group-hover:translate-y-0 transition-transform duration-500 ease-out h-30" />
+
         {/* Text content positioned at bottom */}
-        <div class="absolute bg-black/40 bottom-0 left-0 right-0 p-4 pt-2 backdrop-blur-xlf text-white">
+        <div class="text-sm text-neutral-300 absolute bg-black/40 bottom-0 left-0 right-0 p-6 pt-3 text-white z-10 transition-all duration-300">
           <a
             href={`/post/${post.id}`}
-            class="text-lg line-clamp-1 font-medium mb-2 block hover:text-neutral-200 transition-colors"
+            class="text-xl font-medium mb-2 block hover:text-gray-200 transition-colors"
           >
             {post.data.title}
           </a>
-          <div class="text-sm text-neutral-300 mb-2">
-            <FormattedDate date={post.data.pubDate} />
-          </div>
-          <p class="text-sm line-clamp-1 text-neutral-300">
+          <FormattedDate date={post.data.pubDate} />
+          <p class="text-sm mt-2 line-clamp-1 text-gray-100">
             {post.data.description}
           </p>
         </div>
