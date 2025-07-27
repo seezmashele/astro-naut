@@ -1,7 +1,6 @@
 ---
 heroImage: '../../assets/images/hades-2-patch-1.jpg'
 pubDate: 'Jul 22 2022'
-featured: false
 title: '4th times the charm for sure'
 description: 'Lorem ipsum dolor sit amet'
 ---

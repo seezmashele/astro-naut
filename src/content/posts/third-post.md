@@ -1,7 +1,6 @@
 ---
 heroImage: '../../assets/images/summer-game-fest.jpg'
 pubDate: 'Jul 22 2022'
-featured: false
 title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
 ---

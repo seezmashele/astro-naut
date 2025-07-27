@@ -9,13 +9,21 @@ const { posts } = Astro.props
   {
     posts.map((post) => (
       <div class="w-full border-b pb-4 bg-grey-200 flex gap-4">
-        <Image
-          class="w-72 shrink-0 aspect-5/3 bg-neutral-300"
-          src={post.data.heroImage}
-          alt={post.data.title}
-        />
-        <div class="pt-4 flex text-sm flex-col text-base gap-2">
-          <a href={`/post/${post.id}`} class="text-lg font-medium">
+        <a
+          href={`/post/${post.id}`}
+          class="w-72 overflow-hidden shrink-0 transform group aspect-5/3"
+        >
+          <Image
+            class="w-72 shrink-0 object-cover transform duration-500 group-hover:scale-105 will-change-transform aspect-5/3 bg-[#e3dacc]"
+            src={post.data.heroImage}
+            alt={post.data.title}
+          />
+        </a>
+        <div class="pt-4 text-neutral-900 flex text-sm flex-col text-base gap-2">
+          <a
+            href={`/post/${post.id}`}
+            class="text-xl text-black hover:underline font-medium"
+          >
             {post.data.title}
           </a>
           <FormattedDate date={post.data.pubDate} />
